@@ -74,7 +74,7 @@ ter_score = ter.corpus_score(
     [references]
 )
 
-# Save Results
+ Results
 
 with open("scores.txt", "w", encoding="utf-8") as file:
 
