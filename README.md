@@ -1,19 +1,14 @@
 # -English-Hindi-Dataset-Processing-and-Analysis
  import pandas as pd
 from transformers import pipeline
-
-# ----------------------------
 # Load Translation Model
-# ----------------------------
 
 translator = pipeline(
     task="translation",
     model="Helsinki-NLP/opus-mt-en-hi"
 )
 
-# ----------------------------
 # Load Cleaned Dataset
-# ----------------------------
 
 df = pd.read_excel("../Assignment1/cleaned_dataset.xlsx")
 
@@ -51,18 +46,14 @@ from sacrebleu.metrics import BLEU
 from sacrebleu.metrics import CHRF
 from sacrebleu.metrics import TER
 
-# ----------------------------
 # Load Translations
-# ----------------------------
 
 df = pd.read_excel("translations.xlsx")
 
 references = df["Hindi Sentences"].tolist()
 hypotheses = df["Model-generated Hindi translation"].tolist()
 
-# ----------------------------
 # Metrics
-# ----------------------------
 
 bleu = BLEU()
 chrf = CHRF()
@@ -83,9 +74,7 @@ ter_score = ter.corpus_score(
     [references]
 )
 
-# ----------------------------
 # Save Results
-# ----------------------------
 
 with open("scores.txt", "w", encoding="utf-8") as file:
 
